@@ -26,9 +26,10 @@ int main (void)
         relhumidity = randof (50) + 10;
 
         //  Send message to all subscribers
-        char update [20];
-        sprintf (update, "%05d %d %d", zipcode, temperature, relhumidity);
-        s_send (publisher, update);
+        char update [50];
+        sprintf (update, "W %05d %d %d", zipcode, temperature, relhumidity);
+        int size = s_send (publisher, update);
+	printf("Sent %d \n", size);
     }
     zmq_close (publisher);
     zmq_ctx_destroy (context);
