@@ -30,6 +30,7 @@ int main (void)
     int update_nbr = 0;
     while (1) {
         char *string = s_recv (subscriber);
+        printf("%s", string);
         if (strcmp (string, "END") == 0) {
             free (string);
             break;

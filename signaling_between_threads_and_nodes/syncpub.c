@@ -4,7 +4,7 @@
 #include "zhelpers.h"
 
 //  We wait for 10 subscribers
-#define SUBSCRIBERS_EXPECTED  10
+#define SUBSCRIBERS_EXPECTED 2 
 
 int main (void)
 {
@@ -32,10 +32,12 @@ int main (void)
     //  Now broadcast exactly 1M updates followed by END
     printf ("Broadcasting messages\n");
     int update_nbr;
-    for (update_nbr = 0; update_nbr < 1000000; update_nbr++)
+    for (update_nbr = 0; update_nbr < 100; update_nbr++)
         s_send (publisher, "Rhubarb");
 
+    printf("ENDING the publish.");
     s_send (publisher, "END");
+    printf("Sent the end messages");
 
     zmq_close (publisher);
     zmq_close (syncservice);
