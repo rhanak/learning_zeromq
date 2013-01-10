@@ -10,7 +10,7 @@
 
 //  Include a bunch of headers that we will need in the examples
 
-#include <zmq.h>
+#include <czmq.h>
 
 #include <stdint.h>
 #include <stdio.h>

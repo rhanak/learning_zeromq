@@ -12,6 +12,7 @@ int main (void)
 
     //  Socket to talk to clients
     void *publisher = zmq_socket (context, ZMQ_PUB);
+    zsocket_set_sndhwm (publisher, 2000000);
     zmq_bind (publisher, "tcp://*:5561");
 
     //  Socket to receive signals
@@ -32,8 +33,9 @@ int main (void)
     //  Now broadcast exactly 1M updates followed by END
     printf ("Broadcasting messages\n");
     int update_nbr;
-    for (update_nbr = 0; update_nbr < 100; update_nbr++)
+    for (update_nbr = 0; update_nbr < 10000; update_nbr++) {
         s_send (publisher, "Rhubarb");
+    }
 
     printf("ENDING the publish.");
     s_send (publisher, "END");
