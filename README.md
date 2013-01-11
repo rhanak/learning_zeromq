@@ -7,7 +7,7 @@ learning_zeromq
 
 ../c -li ../include -ll /usr/local/lib -l -q tasksink.c
 
-CH. 1
+**CH. 1
 
 Request-reply, which connects a set of clients to a set of services. This is a remote procedure call and task distribution pattern.
 Publish-subscribe, which connects a set of publishers to a set of subscribers. This is a data distribution pattern.
@@ -30,7 +30,7 @@ When you exit the program, close your sockets and then call zmq_ctx_destroy(). T
 Upgrading from 2.2 to 3.2
 Finally, we added context monitoring via the zmq_ctx_set_monitor() call, which lets you track connections and disconnections, and other events on sockets.
 
-CH. 2 Sockets and Patterns
+**CH. 2 Sockets and Patterns
 
 To create a connection between two nodes you use zmq_bind() in one node, and zmq_connect() in the other. As a general rule of thumb, the node which does zmq_bind() is a "server", sitting on a well-known network address, and the node which does zmq_connect() is a "client", with unknown or arbitrary network addresses. Thus we say that we "bind a socket to an endpoint" and "connect a socket to an endpoint", the endpoint being that well-known network address.
 
@@ -118,3 +118,9 @@ It delivers whole messages exactly as they were sent, using a simple framing on 
 It does not impose any format on messages. They are blobs of zero to gigabytes large. When you want to represent data you choose some other product on top, such as Google's protocol buffers, XDR, and others.
 It handles network errors intelligently. Sometimes it retries, sometimes it tells you an operation failed.
 It reduces your carbon footprint. Doing more with less CPU means your boxes use less power, and you can keep your old boxes in use for longer. Al Gore would love ØMQ.
+
+This examples shows that the subscription filter rejects or accepts the entire multi-part message (key plus data). You won't get part of a multi-part message, ever.`
+
+** Chapter 3 - Advanced Request-Reply Patterns
+
+
